@@ -1,6 +1,11 @@
-import { useState } from 'react'
+import { useState, Suspense, lazy } from 'react'
+import { Routes, Route, Outlet, Link } from 'react-router-dom'
+
 import reactLogo from './assets/react.svg'
 import './App.css'
+
+const Page1 = lazy(() => import('./pages/Page1'))
+const Page2 = lazy(() => import('./pages/Page2'))
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,8 +32,49 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="page1"
+            element={
+              <Suspense fallback={<>...</>}>
+                <Page1 />
+              </Suspense>
+            }
+          />
+          <Route
+            path="page2"
+            element={
+              <Suspense fallback={<>...</>}>
+                <Page2 />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
     </div>
   )
 }
+
+const Layout = () =>
+  (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/page1">page 1</Link>
+          </li>
+          <li>
+            <Link to="/page2">page 2</Link>
+          </li>
+        </ul>
+      </nav>
+      <hr/>
+      <Outlet/>
+    </>
+  )
 
 export default App
