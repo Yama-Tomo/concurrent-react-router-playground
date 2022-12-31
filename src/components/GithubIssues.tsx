@@ -50,6 +50,7 @@ export const GithubIssues = (props: GithubIssuesProps) => {
           <ul>
             {issues.map((issue) => (
               <li key={issue.id} style={{ textAlign: 'left' }}>
+                {/* eslint-disable-next-line react/jsx-no-target-blank */}
                 <h3 style={{ marginBlockEnd: '0.3rem' }}><a target="_blank" href={issue.html_url}>{issue.title}</a></h3>
                 <p style={{ marginBlockStart: 0, color: '#555' }}>opened by {issue.user.login}</p>
               </li>
