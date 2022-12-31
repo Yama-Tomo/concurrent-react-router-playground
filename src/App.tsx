@@ -36,19 +36,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route
             path="page1"
-            element={
-              <Suspense fallback={<>...</>}>
-                <Page1 />
-              </Suspense>
-            }
+            element={<Page1 />}
           />
           <Route
             path="page2"
-            element={
-              <Suspense fallback={<>...</>}>
-                <Page2 />
-              </Suspense>
-            }
+            element={<Page2 />}
           />
         </Route>
       </Routes>
@@ -73,7 +65,9 @@ const Layout = () =>
         </ul>
       </nav>
       <hr/>
-      <Outlet/>
+      <Suspense fallback={<>...</>}>
+        <Outlet/>
+      </Suspense>
     </>
   )
 
