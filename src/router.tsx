@@ -1,6 +1,7 @@
 import { useLayoutEffect, useTransition, useRef, useState } from 'react'
 import { Router, BrowserRouterProps } from 'react-router-dom'
 import { createBrowserHistory } from '@remix-run/router'
+import { DelayedTopBar } from './components/DelayedTopBar'
 
 export const BrowserRouter = ({ window, ...rest }: BrowserRouterProps) => {
   const historyRef = useRef<ReturnType<typeof createBrowserHistory>>()
@@ -25,11 +26,14 @@ export const BrowserRouter = ({ window, ...rest }: BrowserRouterProps) => {
   }, [history])
 
   return (
-    <Router
-      {...rest}
-      location={state.location}
-      navigationType={state.action}
-      navigator={history}
-    />
+    <>
+      {isPending && <DelayedTopBar delayMs={250} />}
+      <Router
+        {...rest}
+        location={state.location}
+        navigationType={state.action}
+        navigator={history}
+      />
+    </>
   )
 }
