@@ -4,8 +4,8 @@ import { Routes, Route, Outlet, Link } from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
-const Page1 = lazy(() => import('./pages/Page1'))
-const Page2 = lazy(() => import('./pages/Page2'))
+const ReactIssues = lazy(() => import('./pages/ReactIssues'))
+const TypescriptIssues = lazy(() => import('./pages/TypescriptIssues'))
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,12 +35,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
-            path="page1"
-            element={<Page1 />}
+            path="/issues/react/:page"
+            element={<ReactIssues />}
           />
           <Route
-            path="page2"
-            element={<Page2 />}
+            path="/issues/typescript/:page"
+            element={<TypescriptIssues />}
           />
         </Route>
       </Routes>
@@ -57,10 +57,10 @@ const Layout = () =>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/page1">page 1</Link>
+            <Link to="/issues/react/1">facebook/react</Link>
           </li>
           <li>
-            <Link to="/page2">page 2</Link>
+            <Link to="/issues/typescript/1">microsoft/typescript</Link>
           </li>
         </ul>
       </nav>

@@ -22,7 +22,7 @@ export const BrowserRouter = ({ window, ...rest }: BrowserRouterProps) => {
         setState(update)
       })
     })
-  }, [history, startTransition, setState])
+  }, [history])
 
   return (
     <Router
