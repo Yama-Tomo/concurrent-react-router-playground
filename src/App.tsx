@@ -24,53 +24,42 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            path="/issues/react/:page"
-            element={<ReactIssues />}
-          />
-          <Route
-            path="/issues/typescript/:page"
-            element={<TypescriptIssues />}
-          />
+          <Route path="/issues/react/:page" element={<ReactIssues />} />
+          <Route path="/issues/typescript/:page" element={<TypescriptIssues />} />
         </Route>
       </Routes>
     </div>
   )
 }
 
-const Layout = () =>
-  (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/issues/react/1">facebook/react</Link>
-          </li>
-          <li>
-            <Link to="/issues/typescript/1">microsoft/typescript</Link>
-          </li>
-        </ul>
-      </nav>
-      <hr/>
-      <Suspense fallback={<>...</>}>
-        <Outlet/>
-      </Suspense>
-    </>
-  )
+const Layout = () => (
+  <>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/issues/react/1">facebook/react</Link>
+        </li>
+        <li>
+          <Link to="/issues/typescript/1">microsoft/typescript</Link>
+        </li>
+      </ul>
+    </nav>
+    <hr />
+    <Suspense fallback={<>...</>}>
+      <Outlet />
+    </Suspense>
+  </>
+)
 
 export default App

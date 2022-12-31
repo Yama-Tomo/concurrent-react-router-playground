@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import TopBarProgress from 'react-topbar-progress-indicator'
 
 TopBarProgress.config({
-  barColors: { 0: '#41d1ff', 1: '#41d1ff' }
+  barColors: { 0: '#41d1ff', 1: '#41d1ff' },
 })
 export type DelayedTopBarProps = { delayMs: number }
 export const DelayedTopBar = ({ delayMs }: DelayedTopBarProps) => {
